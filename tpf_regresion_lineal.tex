@@ -11,7 +11,7 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{float}
-\usepackage{caption}
+\usepackage[justification=centering]{caption}
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{listings}
@@ -36,7 +36,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\small UCASAL -- Estadística de Datos}
-\rhead{\small Trabajo Final: Regresión Lineal}
+\rhead{\small Trabajo final: regresión lineal}
 \cfoot{\thepage}
 
 % Código
@@ -65,11 +65,11 @@
 {\large Estadística de Datos\par}
 \vspace{2.0cm}
 \rule{\linewidth}{0.8pt}\par\vspace{0.4cm}
-{\Huge\bfseries Trabajo Final\par}
+{\Huge\bfseries Trabajo final\par}
 \vspace{0.3cm}
-{\LARGE Análisis de Regresión Lineal\par}
+{\LARGE Análisis de regresión lineal\par}
 \vspace{0.3cm}
-{\large Velocidad y distancia de frenado de automóviles (dataset \texttt{cars})\par}
+{\large Velocidad y distancia de frenado de automóviles\par}
 \vspace{0.4cm}\rule{\linewidth}{0.8pt}\par
 \vfill
 \begin{tabular}{rl}
@@ -120,11 +120,11 @@ Se utiliza el dataset \texttt{cars}, incluido en la distribución base del lengu
 
 \subsection{Unidades de medida}
 
-El dataset original registra la velocidad en millas por hora (mph) y la distancia en pies. Para este trabajo, \textbf{ambas variables se convirtieron al Sistema Internacional antes de realizar cualquier cálculo}, utilizando los factores de conversión exactos:
+El dataset original registra la velocidad en millas por hora (mph) y la distancia en pies. Para este trabajo, ambas variables se convirtieron al Sistema Internacional antes de realizar cualquier cálculo, utilizando los factores de conversión exactos:
 
 \begin{table}[H]
 \centering
-\caption{Conversión de unidades aplicada a los datos}
+\caption{Conversión de unidades aplicada a los datos.}
 \begin{tabular}{llll}
 \toprule
 \textbf{Variable} & \textbf{Unidad original} & \textbf{Unidad utilizada} & \textbf{Factor de conversión} \\
@@ -139,7 +139,7 @@ En adelante, todos los valores, estimaciones, intervalos y conclusiones se expre
 
 \begin{table}[H]
 \centering
-\caption{Variables del conjunto de datos}
+\caption{Variables del conjunto de datos.}
 \begin{tabular}{llll}
 \toprule
 \textbf{Variable} & \textbf{Descripción} & \textbf{Unidad} & \textbf{Tipo} \\
@@ -163,7 +163,7 @@ La relación causal tiene sentido físico: a mayor velocidad, mayor distancia ne
 
 \begin{table}[H]
 \centering
-\caption{Observaciones del dataset \texttt{cars} en unidades SI ($x$: velocidad en km/h; $y$: distancia en m)}
+\caption{Observaciones del dataset \texttt{cars} en unidades SI ($x$: velocidad en km/h; $y$: distancia en m).}
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
 \begin{tabular}{rrr|rrr|rrr|rrr|rrr}
@@ -186,11 +186,11 @@ Obs & $x$ & $y$ & Obs & $x$ & $y$ & Obs & $x$ & $y$ & Obs & $x$ & $y$ & Obs & $x
 
 Los valores se muestran redondeados a dos decimales; los cálculos se realizaron con la precisión completa de la conversión.
 
-\subsection{Consideraciones sobre el muestreo (Unidad III)}
+\subsection{Consideraciones sobre el muestreo}
 
-Los datos \textbf{no provienen de un muestreo probabilístico documentado}: se trata de registros históricos de vehículos y condiciones de la época, por lo que corresponden, en la práctica, a un muestreo no probabilístico. En consecuencia:
+Los datos no provienen de un muestreo probabilístico documentado: se trata de registros históricos de vehículos y condiciones de la época, por lo que corresponden, en la práctica, a un muestreo no probabilístico. En consecuencia:
 \begin{itemize}[leftmargin=*]
-  \item Las inferencias deben interpretarse como válidas \textbf{bajo los supuestos del modelo}, y no como generalizables a los automóviles actuales (con frenos ABS, neumáticos y pesos muy diferentes).
+  \item Las inferencias deben interpretarse como válidas bajo los supuestos del modelo, y no como generalizables a los automóviles actuales (con frenos ABS, neumáticos y pesos muy diferentes).
   \item El análisis tiene valor metodológico y didáctico, y permite ilustrar todo el proceso de modelado.
 \end{itemize}
 
@@ -201,7 +201,7 @@ Los datos \textbf{no provienen de un muestreo probabilístico documentado}: se t
 
 \begin{table}[H]
 \centering
-\caption{Estadísticos descriptivos}
+\caption{Estadísticos descriptivos.}
 \begin{tabular}{lcc}
 \toprule
 \textbf{Estadístico} & \textbf{Velocidad $x$ (km/h)} & \textbf{Distancia $y$ (m)} \\
@@ -216,7 +216,7 @@ Desviación estándar ($s$) & 8{,}51 & 7{,}86 \\
 \end{tabular}
 \end{table}
 
-En la distancia, la media (13{,}10 m) supera a la mediana (10{,}97 m), lo que indica una \textbf{asimetría positiva}: hay algunas distancias muy grandes (por ejemplo, 36{,}58 m) que tiran de la media hacia arriba.
+En la distancia, la media (13{,}10 m) supera a la mediana (10{,}97 m), lo que indica una asimetría positiva: hay algunas distancias muy grandes (por ejemplo, 36{,}58 m) que tiran de la media hacia arriba.
 
 \subsection{Diagrama de dispersión}
 
@@ -229,26 +229,27 @@ En la distancia, la media (13{,}10 m) supera a la mediana (10{,}97 m), lo que in
 
 \textbf{Interpretación:}
 \begin{itemize}[leftmargin=*]
-  \item Se observa una \textbf{relación positiva} y aproximadamente \textbf{lineal}: a mayor velocidad, mayor distancia de frenado.
-  \item La \textbf{dispersión vertical aumenta con la velocidad}: a bajas velocidades los puntos están más concentrados, y a altas velocidades se abren. Este patrón anticipa un posible problema de \textbf{heterocedasticidad}, que se evaluará en la Sección~\ref{sec:diagnostico}.
+  \item Se observa una relación positiva y aproximadamente lineal: a mayor velocidad, mayor distancia de frenado.
+  \item La dispersión vertical aumenta con la velocidad: a bajas velocidades los puntos están más concentrados, y a altas velocidades se abren. Este patrón anticipa un posible problema de heterocedasticidad (varianza del error no constante, ver Sección~\ref{sec:modelo}), que se evaluará en la Sección~\ref{sec:diagnostico}.
   \item Con base en el gráfico, el modelo de regresión lineal simple \textbf{parece razonable} como primera aproximación.
 \end{itemize}
 
 % =====================================================
 \section{Planteo del modelo de regresión lineal simple}
+\label{sec:modelo}
 
 Siguiendo la teoría de la Unidad IV, se supone que para un valor dado $x$ de la velocidad, la distancia $Y$ se expresa como:
 \begin{equation}
 Y = \alpha + \beta x + e
 \end{equation}
-donde $\alpha$ es la ordenada al origen, $\beta$ es la pendiente (el cambio esperado en la distancia, en metros, por cada km/h adicional) y $e$ es el error aleatorio. Equivalentemente, la respuesta media es:
+donde $\alpha$ es la ordenada al origen, $\beta$ es la pendiente (el cambio esperado en la distancia, en metros, por cada km/h adicional) y $e$ es el error aleatorio. Entonces, la respuesta media es:
 \begin{equation}
 E[Y] = \alpha + \beta x
 \end{equation}
 
 \begin{table}[H]
 \centering
-\caption{Supuestos del modelo}
+\caption{Supuestos del modelo.}
 \begin{tabular}{ll}
 \toprule
 \textbf{Supuesto} & \textbf{Formulación} \\
@@ -262,7 +263,9 @@ Independencia & Los errores $e_i$ son independientes entre sí \\
 \end{tabular}
 \end{table}
 
-Bajo estos supuestos, para cada $x$ la respuesta $Y$ es una variable aleatoria normal con media $\alpha + \beta x$ y varianza $\sigma^2$ (conexión directa con la distribución normal de la Unidad II).
+Bajo estos supuestos, para cada $x$ la respuesta $Y$ es una variable aleatoria normal con media $\alpha + \beta x$ y varianza $\sigma^2$, conexión directa con la distribución normal.
+
+\textbf{Homocedasticidad y heterocedasticidad.} El supuesto de homocedasticidad establece que la varianza de los errores es la misma, $\sigma^2$, para cualquier valor de la variable de entrada $x$; es decir, la dispersión de las observaciones alrededor de la recta no depende de $x$. Cuando este supuesto no se cumple y la varianza del error cambia con $x$ (por ejemplo, aumenta a medida que crece la velocidad), se habla de heterocedasticidad. En ese caso, las propiedades de los estimadores de mínimos cuadrados pueden verse comprometidas, lo que afecta la confiabilidad de los intervalos de confianza y de los test de hipótesis.
 
 % =====================================================
 \section{Estimación por mínimos cuadrados}
@@ -271,7 +274,7 @@ Bajo estos supuestos, para cada $x$ la respuesta $Y$ es una variable aleatoria n
 
 \begin{table}[H]
 \centering
-\caption{Sumas básicas de los datos (unidades SI)}
+\caption{Sumas básicas de los datos (unidades SI).}
 \begin{tabular}{lr@{\hspace{2.5em}}lr}
 \toprule
 \textbf{Cantidad} & \textbf{Valor} & \textbf{Cantidad} & \textbf{Valor} \\
@@ -308,8 +311,8 @@ S_{xy} &= \sum x_i y_i - n\overline{x}\,\overline{y} = 18.876{,}50 - 50(24{,}784
 \subsection{Interpretación de los coeficientes}
 
 \begin{itemize}[leftmargin=*]
-  \item \textbf{Pendiente $\hat{\beta} = 0{,}745$ m por km/h:} por cada km/h adicional de velocidad, la distancia de frenado \textbf{aumenta en promedio 0{,}745 m}. Dicho de forma más intuitiva, \textbf{cada 10 km/h adicionales la distancia aumenta unos 7{,}4 m}.
-  \item \textbf{Ordenada $\hat{\alpha} = -5{,}358$ m:} formalmente es la distancia esperada a velocidad 0, pero \textbf{carece de interpretación física} (una distancia negativa es imposible). Además, $x = 0$ está fuera del rango observado (6{,}4 a 40{,}2 km/h), por lo que interpretarla sería una \textbf{extrapolación}. Su función es ubicar la recta, no describir un fenómeno real.
+  \item \textbf{Pendiente $\hat{\beta} = 0{,}745$ m por km/h:} por cada km/h adicional de velocidad, la distancia de frenado aumenta en promedio 0{,}745 m. Dicho de forma más intuitiva, cada 10 km/h adicionales la distancia aumenta unos 7{,}4 m.
+  \item \textbf{Ordenada $\hat{\alpha} = -5{,}358$ m:} formalmente es la distancia esperada a velocidad 0, pero carece de interpretación física (una distancia negativa es imposible). Además, $x = 0$ está fuera del rango observado (6{,}4 a 40{,}2 km/h), por lo que interpretarla sería una extrapolación. Su función es ubicar la recta, no describir un fenómeno real.
 \end{itemize}
 
 \subsection{Propiedades verificadas del ajuste}
@@ -321,7 +324,7 @@ Los residuos $\hat{e}_i = y_i - \hat{y}_i$ cumplen las propiedades algebraicas d
   \item La recta pasa por el punto $(\overline{x}, \overline{y}) = (24{,}784;\ 13{,}100)$.
 \end{itemize}
 
-Bajo los supuestos de Gauss-Markov, $\hat{\alpha}$ y $\hat{\beta}$ son \textbf{insesgados}, \textbf{consistentes} y \textbf{de mínima varianza entre los estimadores lineales insesgados} (BLUE, \textit{Best Linear Unbiased Estimator}).
+Bajo los supuestos de linealidad, media cero, homocedasticidad e independencia de los errores, planteados en la Sección~\ref{sec:modelo} y conocidos como supuestos de Gauss-Markov, $\hat{\alpha}$ y $\hat{\beta}$ son insesgados, consistentes y de mínima varianza entre los estimadores lineales insesgados. El supuesto de normalidad no es necesario para estas propiedades, pero sí para la inferencia basada en las distribuciones $t$, $F$ y $\chi^2$ de las Secciones 7 y 8.
 
 % =====================================================
 \section{Coeficientes de correlación y determinación}
@@ -344,7 +347,13 @@ SC_{reg} &= STC - SS_R = 1.968{,}19 \text{ m}^2
 r^2 = \frac{SC_{reg}}{STC} = \frac{1.968{,}19}{3.022{,}97} = 0{,}6511
 \end{equation}
 
-\textbf{Interpretación:} el \textbf{65{,}1\,\%} de la variabilidad de la distancia de frenado queda explicado por la relación lineal con la velocidad. El 34{,}9\,\% restante se atribuye a otros factores no incluidos (estado de los frenos, neumáticos, superficie, tiempo de reacción del conductor, etc.). El $r^2$ ajustado es $0{,}6438$, muy cercano al anterior, como es esperable con un solo predictor.
+El \textbf{65{,}1\,\%} de la variabilidad de la distancia de frenado queda explicado por la relación lineal con la velocidad. El 34{,}9\,\% restante se atribuye a otros factores no incluidos (estado de los frenos, neumáticos, superficie, tiempo de reacción del conductor, etc.). 
+
+En la Unidad IV se trabajó que $r^2$ tiende a aumentar al incorporar variables al modelo, aunque no sean relevantes, y propone para ello el coeficiente de determinación ajustado, que penaliza la cantidad de predictores. En regresión lineal simple (un solo predictor) se calcula como:
+\begin{equation}
+	r^2_{aj} = 1 - (1 - r^2)\,\frac{n-1}{n-2} = 1 - (1 - 0{,}6511)\,\frac{49}{48} = 0{,}6438
+\end{equation}
+El valor es muy cercano al de $r^2$, como es esperable con un solo predictor: la penalización solo cobra importancia al comparar modelos con distinta cantidad de variables explicativas.
 
 \subsection{Coeficiente de correlación}
 
@@ -352,9 +361,9 @@ r^2 = \frac{SC_{reg}}{STC} = \frac{1.968{,}19}{3.022{,}97} = 0{,}6511
 r = \frac{S_{xy}}{\sqrt{S_{xx}\,S_{yy}}} = (\text{signo de } \hat{\beta})\sqrt{r^2} = +\sqrt{0{,}6511} = 0{,}8069
 \end{equation}
 
-\textbf{Interpretación:} existe una \textbf{correlación lineal positiva y fuerte} entre la velocidad y la distancia de frenado.
+Existe una correlación lineal positiva y fuerte entre la velocidad y la distancia de frenado.
 
-Según la teoría de la unidad, en las ciencias físicas suelen encontrarse valores de $r^2 \geq 0{,}60$; el valor obtenido se ubica en ese rango. Sin embargo, como advierte el material, \textbf{$r^2$ por sí solo no permite concluir que la relación sea estadísticamente significativa}; para ello se requiere la inferencia de la sección siguiente.
+Según la teoría de la unidad, en las ciencias físicas suelen encontrarse valores de $r^2 \geq 0{,}60$; el valor obtenido se ubica en ese rango. Sin embargo, como advierte el material, $r^2$ por sí solo no permite concluir que la relación sea estadísticamente significativa, para ello se requiere la inferencia de la sección siguiente.
 
 % =====================================================
 \section{Inferencia sobre los coeficientes de regresión}
@@ -366,7 +375,7 @@ Como $\dfrac{SS_R}{\sigma^2} \sim \chi^2_{n-2}$, el estimador insesgado de $\sig
 \hat{\sigma}^2 = s^2 = \frac{SS_R}{n-2} = \frac{1.054{,}78}{48} = 21{,}97 \text{ m}^2 \qquad s = 4{,}69 \text{ m}
 \end{equation}
 
-El \textbf{error estándar de la estimación} indica que, en promedio, las observaciones se desvían unos 4{,}7 m de la recta ajustada.
+El error estándar de la estimación indica que, en promedio, las observaciones se desvían unos 4{,}7 m de la recta ajustada.
 
 \textbf{Intervalo de confianza del 95\,\% para $\sigma^2$} (distribución $\chi^2$ de la Unidad III con $n-2 = 48$ g.l.):
 \begin{equation}
@@ -402,7 +411,7 @@ $H_0: \alpha = 0$ \quad vs. \quad $H_1: \alpha \neq 0$
 t_{obs} = \frac{-5{,}3581}{2{,}0600} = -2{,}601 \qquad p = 0{,}0123
 \end{equation}
 
-Se rechaza $H_0$ al 5\,\%. Desde el punto de vista físico, esperaríamos que a velocidad nula la distancia fuera cero; este resultado sugiere que \textbf{la relación verdadera no es exactamente lineal} cerca del origen (se retoma en la Sección~\ref{sec:discusion}).
+Se rechaza $H_0$ al 5\,\%. Desde el punto de vista físico, esperaríamos que a velocidad nula la distancia fuera cero; este resultado sugiere que la relación verdadera no es exactamente lineal cerca del origen (se retoma en la Sección~\ref{sec:discusion}).
 
 \subsection{Intervalos de confianza del 95\,\% para los parámetros}
 
@@ -417,7 +426,7 @@ Se rechaza $H_0$ al 5\,\%. Desde el punto de vista físico, esperaríamos que a 
 
 \begin{table}[H]
 \centering
-\caption{Resumen de la estimación de los coeficientes}
+\caption{Resumen de la estimación de los coeficientes.}
 \begin{tabular}{lccccc}
 \toprule
 \textbf{Parámetro} & \textbf{Estimación} & \textbf{Error est.} & $\boldsymbol{t}$ & \textbf{Valor p} & \textbf{IC 95\,\%} \\
@@ -431,11 +440,15 @@ $\beta$ (m por km/h) & 0{,}745 & 0{,}079 & 9{,}464 & $1{,}49 \times 10^{-12}$ & 
 % =====================================================
 \section{Análisis de varianza (ANOVA) del modelo}
 
-El ANOVA contrasta la misma hipótesis $H_0: \beta = 0$ a través de la descomposición de la variabilidad total.
+El análisis de varianza contrasta la misma hipótesis $H_0: \beta = 0$ a partir de la descomposición de la variabilidad total vista en la Sección 6 ($STC = SC_{reg} + SS_R$). Cada suma de cuadrados se divide por sus grados de libertad para obtener un cuadrado medio, y se compara la variabilidad explicada por la regresión con la variabilidad residual mediante el cociente
+\begin{equation}
+	F = \frac{CM_{reg}}{CM_{res}} = \frac{SC_{reg}/1}{SS_R/(n-2)}
+\end{equation}
+Bajo $H_0$, este cociente sigue una distribución $F$ de Fisher-Snedecor con $1$ y $n-2$ grados de libertad (el cociente de dos variables $\chi^2$ independientes, cada una dividida por sus grados de libertad). Si la regresión no explica nada, $F$ debería ser cercano a 1; valores grandes indican que la variabilidad explicada supera claramente a la residual.
 
 \begin{table}[H]
 \centering
-\caption{Tabla ANOVA del modelo de regresión (sumas de cuadrados en m$^2$)}
+\caption{Tabla ANOVA del modelo de regresión (sumas de cuadrados en m$^2$).}
 \begin{tabular}{lrcrcc}
 \toprule
 \textbf{Fuente} & \textbf{Suma de cuadrados} & \textbf{g.l.} & \textbf{Cuadrado medio} & $\boldsymbol{F}$ & \textbf{Valor p} \\
@@ -494,7 +507,7 @@ W_m = \sqrt{\left[\frac{1}{n} + \frac{(x_0 - \overline{x})^2}{S_{xx}}\right]s^2}
 
 \begin{table}[H]
 \centering
-\caption{Estimaciones e intervalos para distintos valores de $x_0$ (distancias en m)}
+\caption{Estimaciones e intervalos para distintos valores de $x_0$ (distancias en m).}
 \begin{tabular}{cccc}
 \toprule
 \textbf{$x_0$ (km/h)} & $\hat{y}_0$ & \textbf{IC 95\,\% respuesta media} & \textbf{Intervalo de predicción 95\,\%} \\
@@ -515,16 +528,16 @@ W_m = \sqrt{\left[\frac{1}{n} + \frac{(x_0 - \overline{x})^2}{S_{xx}}\right]s^2}
 
 \textbf{Observaciones:}
 \begin{itemize}[leftmargin=*]
-  \item El intervalo de predicción es \textbf{mucho más amplio} que el de la respuesta media, porque incorpora la variabilidad individual de cada auto ($\sigma^2$) además de la incertidumbre en la estimación de la recta.
-  \item Ambos intervalos son \textbf{más angostos cerca de $\overline{x} = 24{,}78$ km/h} y se ensanchan al alejarse, por el término $(x_0 - \overline{x})^2 / S_{xx}$. Por eso a 25 km/h los intervalos son los más estrechos de la tabla.
-  \item Para $x_0 = 15$ km/h el límite inferior del intervalo de predicción es \textbf{negativo}, lo que es físicamente imposible. Es otra señal de que el supuesto de varianza constante no se ajusta bien a velocidades bajas.
+  \item El intervalo de predicción es mucho más amplio que el de la respuesta media, porque incorpora la variabilidad individual de cada auto ($\sigma^2$) además de la incertidumbre en la estimación de la recta.
+  \item Ambos intervalos son más angostos cerca de $\overline{x} = 24{,}78$ km/h y se ensanchan al alejarse, por el término $(x_0 - \overline{x})^2 / S_{xx}$. Por eso a 25 km/h los intervalos son los más estrechos de la tabla.
+  \item Para $x_0 = 15$ km/h el límite inferior del intervalo de predicción es negativo, lo que es físicamente imposible. Es otra señal de que el supuesto de varianza constante no se ajusta bien a velocidades bajas.
 \end{itemize}
 
 % =====================================================
 \section{Diagnóstico de los supuestos del modelo}
 \label{sec:diagnostico}
 
-El diagnóstico se basa en el \textbf{análisis gráfico de los residuos}, respaldado por medidas que utilizan únicamente contenidos de la asignatura: residuos estandarizados, la regla empírica de la distribución normal (Unidad II) y medidas descriptivas de dispersión.
+El diagnóstico se basa en el análisis gráfico de los residuos, respaldado por medidas de los residuos estandarizados, la regla empírica de la distribución normal (Unidad II) y medidas descriptivas de dispersión.
 
 \begin{figure}[H]
 \centering
@@ -539,15 +552,15 @@ Los residuos cumplen las propiedades algebraicas de los mínimos cuadrados: $\su
 
 \subsection{Linealidad}
 
-El gráfico de residuos vs.\ ajustados (Figura~\ref{fig:diagnostico}, izquierda) no muestra una curvatura marcada, aunque se insinúa un leve patrón convexo: residuos mayormente negativos en la zona central y positivos en los extremos altos. El supuesto de linealidad es \textbf{aceptable como aproximación}.
+El gráfico de residuos vs.\ ajustados (Figura~\ref{fig:diagnostico}, izquierda) no muestra una curvatura marcada, aunque se insinúa un leve patrón convexo: residuos mayormente negativos en la zona central y positivos en los extremos altos. El supuesto de linealidad es aceptable como aproximación.
 
 \subsection{Homocedasticidad}
 
-La nube de residuos adopta forma de \textbf{embudo}: la dispersión crece con los valores ajustados. Para cuantificar lo observado, se dividió la velocidad en tres tramos (terciles) y se calculó el desvío estándar de los residuos en cada uno:
+La nube de residuos adopta forma de embudo: la dispersión crece con los valores ajustados. Para cuantificar lo observado, se dividió la velocidad en tres tramos (terciles) y se calculó el desvío estándar de los residuos en cada uno:
 
 \begin{table}[H]
 \centering
-\caption{Dispersión de los residuos por tramos de velocidad}
+\caption{Dispersión de los residuos por tramos de velocidad.}
 \begin{tabular}{ccccc}
 \toprule
 \textbf{Tramo} & \textbf{Velocidad (km/h)} & $\boldsymbol{n}$ & \textbf{Desvío de residuos (m)} & \textbf{Razón vs.\ tramo 1} \\
@@ -559,15 +572,15 @@ La nube de residuos adopta forma de \textbf{embudo}: la dispersión crece con lo
 \end{tabular}
 \end{table}
 
-En las velocidades medias y altas, la dispersión de los residuos es \textbf{más del doble} que en las velocidades bajas. Bajo homocedasticidad, los tres desvíos deberían ser similares. Se concluye que existe una \textbf{violación moderada} del supuesto de varianza constante, coherente con la forma de embudo del gráfico.
+En las velocidades medias y altas, la dispersión de los residuos es más del doble que en las velocidades bajas. Bajo homocedasticidad, los tres desvíos deberían ser similares. Se concluye que existe una violación moderada del supuesto de varianza constante, coherente con la forma de embudo del gráfico.
 
 \subsection{Normalidad de los errores}
 
-En el gráfico Q-Q (Figura~\ref{fig:diagnostico}, derecha), los puntos siguen razonablemente la recta en la zona central, pero se apartan hacia arriba en la \textbf{cola superior}. Para complementar la lectura gráfica, se comparó la proporción de residuos estandarizados dentro de $\pm k$ desvíos con la regla empírica de la distribución normal:
+En el gráfico Q-Q (Figura~\ref{fig:diagnostico}, derecha), los puntos siguen razonablemente la recta en la zona central, pero se apartan hacia arriba en la cola superior. Para complementar la lectura gráfica, se comparó la proporción de residuos estandarizados dentro de $\pm k$ desvíos con la regla empírica de la distribución normal:
 
 \begin{table}[H]
 \centering
-\caption{Residuos estandarizados vs.\ regla empírica de la normal}
+\caption{Residuos estandarizados vs.\ regla empírica de la normal.}
 \begin{tabular}{ccc}
 \toprule
 \textbf{Intervalo} & \textbf{Proporción observada} & \textbf{Esperada bajo normalidad} \\
@@ -579,12 +592,9 @@ $\pm 3$ & 100{,}0\,\% & 99{,}7\,\% \\
 \end{tabular}
 \end{table}
 
-Las proporciones son cercanas a las teóricas, por lo que la forma general es compatible con una normal. Sin embargo, la distribución de los residuos es \textbf{asimétrica hacia la derecha}:
-\begin{itemize}[leftmargin=*]
-  \item la mediana ($-0{,}69$ m) es menor que la media ($0$ m), y
-  \item el residuo máximo ($13{,}17$ m) es bastante mayor en valor absoluto que el mínimo ($-8{,}86$ m).
-\end{itemize}
-Es decir, hay algunos frenados mucho más largos de lo que predice la recta, mientras que no hay desvíos tan grandes hacia abajo. Se valora como una \textbf{violación leve} del supuesto de normalidad. Con $n = 50$, el Teorema Central del Límite atenúa su impacto sobre la inferencia de $\beta$, pero los intervalos de predicción individuales pueden ser menos precisos.
+Las proporciones son cercanas a las teóricas, por lo que la forma general es compatible con una normal. Sin embargo, la distribución de los residuos es asimétrica hacia la derecha. La mediana ($-0{,}69$ m) es menor que la media ($0$ m), y el residuo máximo ($13{,}17$ m) es bastante mayor en valor absoluto que el mínimo ($-8{,}86$ m).
+
+Es decir, hay algunos frenados mucho más largos de lo que predice la recta, mientras que no hay desvíos tan grandes hacia abajo. Se valora como una violación leve del supuesto de normalidad. Con $n = 50$, el Teorema Central del Límite atenúa su impacto sobre la inferencia de $\beta$, pero los intervalos de predicción individuales pueden ser menos precisos.
 
 \subsection{Observaciones atípicas}
 
@@ -592,7 +602,7 @@ Se identificaron tres observaciones con residuos estandarizados mayores que 2 en
 
 \begin{table}[H]
 \centering
-\caption{Observaciones con residuo estandarizado $|r_i| > 2$}
+\caption{Observaciones con residuo estandarizado $|r_i| > 2$.}
 \small
 \begin{tabular}{cccccc}
 \toprule
@@ -609,13 +619,13 @@ Los tres residuos son positivos, lo que refuerza la asimetría señalada en el p
 
 \subsection{Independencia}
 
-La independencia de los errores se evalúa principalmente por el \textbf{diseño de la recolección}: cada observación corresponde a un frenado distinto y los datos no tienen un orden temporal registrado (están ordenados por velocidad). Además, el gráfico de residuos no muestra rachas ni patrones sistemáticos más allá de los ya descritos. No hay elementos que indiquen dependencia entre observaciones, por lo que el supuesto se considera \textbf{aceptable}.
+La independencia de los errores se evalúa principalmente por el diseño de la recolección: cada observación corresponde a un frenado distinto y los datos no tienen un orden temporal registrado (están ordenados por velocidad). Además, el gráfico de residuos no muestra rachas ni patrones sistemáticos más allá de los ya descritos. No hay elementos que indiquen dependencia entre observaciones, por lo que el supuesto se considera aceptable.
 
 \subsection{Resumen del diagnóstico}
 
 \begin{table}[H]
 \centering
-\caption{Resumen de la verificación de supuestos}
+\caption{Resumen de la verificación de supuestos.}
 \small
 \begin{tabular}{llll}
 \toprule
@@ -629,13 +639,13 @@ Independencia & Diseño; gráfico de residuos & Sin patrones & Aceptable \\
 \end{tabular}
 \end{table}
 
-Como confirmación numérica, en el Anexo~\ref{sec:ampliacion} se presentan pruebas formales de los supuestos, que exceden el programa de la asignatura. Sus resultados coinciden con este diagnóstico.
+Como confirmación numérica, en el Anexo~\ref{sec:ampliacion} se presentan pruebas formales de los supuestos, sus resultados coinciden con este diagnóstico.
 
 % =====================================================
 \section{Discusión crítica y extensión del modelo}
 \label{sec:discusion}
 
-El modelo lineal es \textbf{estadísticamente significativo} y explica el 65\,\% de la variabilidad, pero el diagnóstico revela limitaciones. Estas tienen una explicación física: la distancia de frenado depende de la energía cinética, que es proporcional al \textbf{cuadrado} de la velocidad ($E_c = \tfrac{1}{2}mv^2$). Por eso la relación verdadera no es exactamente lineal, la ordenada al origen resulta negativa y la dispersión crece con la velocidad.
+El modelo lineal es estadísticamente significativo y explica el 65\,\% de la variabilidad, pero el diagnóstico revela limitaciones. Estas tienen una explicación física: la distancia de frenado depende de la energía cinética, que es proporcional al cuadrado de la velocidad ($E_c = \tfrac{1}{2}mv^2$). Por eso la relación verdadera no es exactamente lineal, la ordenada al origen resulta negativa y la dispersión crece con la velocidad.
 
 Como extensión, se ajustó el modelo transformado
 \begin{equation}
@@ -652,7 +662,7 @@ que sigue siendo una regresión lineal simple (lineal en los parámetros), aplic
 
 \begin{table}[H]
 \centering
-\caption{Comparación entre el modelo original y el transformado}
+\caption{Comparación entre el modelo original y el transformado.}
 \begin{tabular}{lcc}
 \toprule
 \textbf{Indicador} & \textbf{Modelo original ($Y$)} & \textbf{Modelo transformado ($\sqrt{Y}$)} \\
@@ -669,7 +679,7 @@ Predicción a 35 km/h & 20{,}71 m & 20{,}94 m \\
 \end{tabular}
 \end{table}
 
-La comparación muestra que la transformación \textbf{mejora el cumplimiento de los supuestos}:
+La comparación muestra que la transformación mejora el cumplimiento de los supuestos:
 \begin{itemize}[leftmargin=*]
   \item \textbf{Homocedasticidad:} la razón máxima entre desvíos por tramo baja de 2{,}29 a 1{,}55. En la Figura~\ref{fig:comparacion} se ve que el embudo del modelo original desaparece y la nube de residuos del modelo transformado tiene un ancho más parejo. Como las dos variables de respuesta están en escalas distintas, se comparan las razones y no los desvíos absolutos.
   \item \textbf{Normalidad y atípicos:} de tres observaciones con $|r_i| > 2$ se pasa a una sola. Solo persiste la observación 23 (22{,}5 km/h y 24{,}4 m), que se aparta claramente del resto de los autos a esa velocidad.
@@ -678,19 +688,19 @@ La comparación muestra que la transformación \textbf{mejora el cumplimiento de
 
 El $r^2$ también es mayor (0{,}709 frente a 0{,}651), aunque esta comparación debe tomarse con cautela, porque cada coeficiente mide la variabilidad explicada en una escala diferente ($Y$ y $\sqrt{Y}$). Además, la ordenada positiva (0{,}705) es más coherente con la física del problema que la ordenada negativa del modelo original. Esto ilustra lo señalado en la Unidad IV: cuando se relajan los supuestos clásicos, existen técnicas de corrección que permiten recuperar las propiedades deseables de los estimadores.
 
-Otras alternativas posibles serían el uso de \textbf{errores estándar robustos} a la heterocedasticidad o un modelo \textbf{cuadrático} en $x$ (que corresponde a regresión múltiple, fuera del alcance de esta asignatura).
+Otras alternativas posibles serían el uso de errores estándar robustos a la heterocedasticidad o un modelo \textbf{cuadrático} en $x$ (que corresponde a regresión múltiple, fuera del alcance de esta asignatura).
 
 % =====================================================
 \section{Conclusiones}
 
 \begin{enumerate}[leftmargin=*]
-  \item Existe una \textbf{relación lineal positiva, fuerte y estadísticamente significativa} entre la velocidad de un automóvil y su distancia de frenado ($r = 0{,}807$; $t = 9{,}46$; $p < 0{,}001$).
-  \item La recta estimada por mínimos cuadrados es $\hat{y} = -5{,}358 + 0{,}745x$: \textbf{cada km/h adicional aumenta la distancia de frenado en unos 0{,}745 m en promedio}, es decir, unos 7{,}4 m cada 10 km/h (IC 95\,\%: 0{,}59 a 0{,}90 m por km/h).
-  \item La velocidad explica el \textbf{65{,}1\,\%} de la variabilidad de la distancia ($r^2 = 0{,}651$); el resto se debe a factores no considerados.
+  \item Existe una relación lineal positiva, fuerte y estadísticamente significativa entre la velocidad de un automóvil y su distancia de frenado ($r = 0{,}807$; $t = 9{,}46$; $p < 0{,}001$).
+  \item La recta estimada por mínimos cuadrados es $\hat{y} = -5{,}358 + 0{,}745x$: cada km/h adicional aumenta la distancia de frenado en unos 0{,}745 m en promedio, es decir, unos 7{,}4 m cada 10 km/h (IC 95\,\%: 0{,}59 a 0{,}90 m por km/h).
+  \item La velocidad explica el 65{,}1\,\% de la variabilidad de la distancia ($r^2 = 0{,}651$); el resto se debe a factores no considerados.
   \item El ANOVA confirma la significación del modelo ($F = 89{,}57$), con equivalencia exacta al test $t$ ($F = t^2$).
   \item Las predicciones individuales tienen una incertidumbre considerable (aproximadamente $\pm 9{,}7$ m), lo que muestra la diferencia práctica entre estimar una media y predecir un caso particular.
-  \item El análisis de residuos detecta \textbf{heterocedasticidad moderada} (la dispersión de los residuos se duplica en velocidades medias y altas) y una \textbf{leve asimetría positiva}, coherentes con la naturaleza cuadrática del fenómeno físico. La transformación $\sqrt{Y}$ ofrece un modelo más adecuado: empareja la dispersión entre tramos y reduce los atípicos de tres a uno.
-  \item Por el origen histórico y no probabilístico de los datos, las conclusiones no son extrapolables a vehículos actuales. El trabajo muestra que un buen modelado no termina en el cálculo de la recta: requiere \textbf{validar los supuestos y pensar críticamente} el fenómeno estudiado.
+  \item El análisis de residuos detecta heterocedasticidad moderada (la dispersión de los residuos se duplica en velocidades medias y altas) y una leve asimetría positiva, coherentes con la naturaleza cuadrática del fenómeno físico. La transformación $\sqrt{Y}$ ofrece un modelo más adecuado: empareja la dispersión entre tramos y reduce los atípicos de tres a uno.
+  \item Por el origen histórico y no probabilístico de los datos, las conclusiones no son extrapolables a vehículos actuales. El trabajo muestra que un buen modelado no termina en el cálculo de la recta: requiere validar los supuestos y pensar críticamente el fenómeno estudiado.
 \end{enumerate}
 
 % =====================================================
@@ -700,7 +710,7 @@ Otras alternativas posibles serían el uso de \textbf{errores estándar robustos
 \bibitem{rcore} R Core Team. \textit{Dataset \texttt{cars}: Speed and Stopping Distances of Cars}. Paquete \texttt{datasets}, R: A Language and Environment for Statistical Computing.
 \bibitem{ross} Ross, S. (2007). \textit{Introducción a la Estadística}. Reverté, España.
 \bibitem{walpole} Walpole, R., Myers, R. y Myers, S. (2012). \textit{Probabilidad y Estadística para Ingeniería y Ciencias}. Pearson Education, México.
-\bibitem{ucasal} UCASAL (2025). Material de estudio de la asignatura Estadística de Datos, Unidades I a IV.
+\bibitem{ucasal} Funes, H. (2025). Material de estudio de la asignatura Estadística de Datos, Unidades I a IV. UCASAL.
 \end{thebibliography}
 
 % =====================================================
@@ -720,7 +730,7 @@ El repositorio incluye la descarga automática del dataset y su conversión a un
 \section{Ampliación: pruebas formales de los supuestos}
 \label{sec:ampliacion}
 
-Las siguientes pruebas \textbf{no forman parte del programa de la asignatura}. Se incluyen solo como confirmación numérica del diagnóstico gráfico de la Sección~\ref{sec:diagnostico}, ya que son de uso estándar en software estadístico. Al igual que las demás medidas adimensionales, sus resultados no dependen de las unidades de medida.
+Las siguientes pruebas no forman parte del programa de la asignatura. Se incluyen solo como confirmación numérica del diagnóstico gráfico de la Sección~\ref{sec:diagnostico}, ya que son de uso estándar en software estadístico. Al igual que las demás medidas adimensionales, sus resultados no dependen de las unidades de medida.
 
 \begin{itemize}[leftmargin=*]
   \item \textbf{Shapiro-Wilk:} contrasta la hipótesis nula de que los residuos provienen de una distribución normal.
@@ -730,7 +740,7 @@ Las siguientes pruebas \textbf{no forman parte del programa de la asignatura}. S
 
 \begin{table}[H]
 \centering
-\caption{Pruebas formales de los supuestos para ambos modelos}
+\caption{Pruebas formales de los supuestos para ambos modelos.}
 \begin{tabular}{lcc}
 \toprule
 \textbf{Prueba} & \textbf{Modelo $Y$} & \textbf{Modelo $\sqrt{Y}$} \\
