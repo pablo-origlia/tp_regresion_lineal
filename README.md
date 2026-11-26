@@ -2,7 +2,7 @@
 
 **UCASAL — Maestría en Ciencia de Datos**
 
-Proyecto en Python que reproduce de forma completa el análisis de regresión lineal simple del trabajo final, aplicado al dataset `cars` (velocidad vs. distancia de frenado de 50 automóviles).
+Proyecto en Python que realiza de forma completa el análisis de regresión lineal simple del trabajo final, aplicado al dataset `cars` (velocidad vs. distancia de frenado de 50 automóviles).
 
 Todo el análisis se realiza en **unidades SI**: velocidad en **km/h** y distancia en **metros**.
 
@@ -19,9 +19,9 @@ Todo el análisis se realiza en **unidades SI**: velocidad en **km/h** y distanc
 | IC de la respuesta media e intervalo de predicción | IV | `src/regresion.py` |
 | Diagnóstico gráfico y descriptivo de supuestos: residuos estandarizados, atípicos, regla empírica 68-95-99,7, dispersión por tramos | II y IV | `src/diagnostico.py` |
 | Extensión: modelo $\sqrt{Y}$ y comparación de residuos | IV | `main.py` |
-| **Ampliación (fuera del programa):** Shapiro-Wilk, Breusch-Pagan, Durbin-Watson | — | `src/ampliacion.py` |
+| Ampliación: Shapiro-Wilk, Breusch-Pagan, Durbin-Watson | — | `src/ampliacion.py` |
 | Gráficos del informe | — | `src/graficos.py` |
-| Reporte de texto y JSON | — | `src/reporte.py` |
+| Reporte de texto | — | `src/reporte.py` |
 
 Los estimadores se calculan **"a mano"** con las fórmulas de la teoría ($S_{xx}$, $S_{xy}$, $SS_R$, etc.), sin usar librerías de modelado que oculten los cálculos.
 
@@ -73,7 +73,6 @@ Opciones disponibles:
 | `--x0` | Velocidades (km/h) para las que se calcula la predicción | `15 25 35` |
 | `--nivel` | Nivel de confianza de los intervalos | `0.95` |
 | `--salida` | Carpeta donde se guardan los resultados | `outputs` |
-| `--con-ampliacion` | Agrega las pruebas formales que exceden el programa | desactivado |
 
 Ejemplo:
 
@@ -93,24 +92,17 @@ El dataset **no viene incluido** en el proyecto. La primera vez que se ejecuta `
 | Velocidad ($x$) | mph | km/h | 1 mph = 1,609344 km/h |
 | Distancia de frenado ($y$) | pies | m | 1 pie = 0,3048 m |
 
-**Todos los cálculos, gráficos y conclusiones usan `data/cars_si.csv`.** En las ejecuciones siguientes se reutilizan los archivos locales. Para regenerarlos, basta con borrar la carpeta `data/` (o los dos CSV).
-
-Las medidas adimensionales ($r$, $r^2$, estadísticos $t$ y $F$, valores p, residuos estandarizados) no cambian con las unidades. Los coeficientes, errores estándar e intervalos sí se expresan en SI.
-
-> **Nota:** `pydataset` guarda una copia de sus datasets en la carpeta `~/.pydataset/` del usuario.
+**Todos los cálculos, gráficos y conclusiones usan `data/cars_si.csv`.** En las ejecuciones siguientes se reutilizan los archivos locales. Para regenerarlos, basta con borrar la carpeta `data/` (o los dos CSV). Las medidas adimensionales ($r$, $r^2$, estadísticos $t$ y $F$, valores p, residuos estandarizados) no cambian con las unidades. Los coeficientes, errores estándar e intervalos sí se expresan en SI.
 
 ## Salidas
 
 Al ejecutarse, el programa imprime el reporte en consola y genera:
 
 - `outputs/resultados.txt`: reporte completo en texto.
-- `outputs/resultados.json`: todos los resultados numéricos en formato estructurado.
 - `outputs/img/fig1_dispersion.png`: diagrama de dispersión.
 - `outputs/img/fig2_recta_intervalos.png`: recta ajustada con bandas de confianza y predicción.
 - `outputs/img/fig3_diagnostico.png`: residuos vs. ajustados y gráfico Q-Q.
 - `outputs/img/fig4_comparacion_residuos.png`: residuos estandarizados del modelo original vs. el modelo $\sqrt{Y}$.
-
-Las figuras son las mismas que se usan en el informe en LaTeX.
 
 ## Criterio del diagnóstico
 
@@ -148,4 +140,4 @@ print(modelo.predecir(35))              # predicción a 35 km/h (en metros)
 
 ## Fuente de los datos
 
-Ezekiel, M. (1930). *Methods of Correlation Analysis*. Wiley. Dataset `cars` del paquete `datasets` de R.
+Ezekiel, M. (1930). *Methods of Correlation Analysis*. Wiley. Capítulo 3, Tabla 10. Dataset `cars` del paquete `datasets` de R.

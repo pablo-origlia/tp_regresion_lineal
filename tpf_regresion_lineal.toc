@@ -1,0 +1,47 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducción y objetivos}{4}{section.1}%
+\contentsline {section}{\numberline {2}Descripción del conjunto de datos}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Unidades de medida}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Variables de entrada y de respuesta}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Datos}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Consideraciones sobre el muestreo}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Análisis exploratorio}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Medidas descriptivas}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Diagrama de dispersión}{6}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Planteo del modelo de regresión lineal simple}{7}{section.4}%
+\contentsline {section}{\numberline {5}Estimación por mínimos cuadrados}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Sumas básicas}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Sumas de cuadrados y productos cruzados}{8}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Estimadores}{8}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Recta de regresión estimada}{8}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Interpretación de los coeficientes}{8}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Propiedades verificadas del ajuste}{8}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Coeficientes de correlación y determinación}{9}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Descomposición de la variabilidad}{9}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Coeficiente de determinación}{9}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Coeficiente de correlación}{9}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Inferencia sobre los coeficientes de regresión}{10}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Estimación de la varianza del error}{10}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Errores estándar de los estimadores}{10}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Test de hipótesis para la pendiente}{10}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Test de hipótesis para la ordenada al origen}{11}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Intervalos de confianza del 95\,\% para los parámetros}{11}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Resumen de coeficientes}{11}{subsection.7.6}%
+\contentsline {section}{\numberline {8}Análisis de varianza (ANOVA) del modelo}{11}{section.8}%
+\contentsline {section}{\numberline {9}Estimación y predicción}{12}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Estimación puntual}{12}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Intervalo de predicción del 95\,\% (nueva observación)}{12}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Intervalo de confianza del 95\,\% para la respuesta media}{12}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Comparación}{13}{subsection.9.4}%
+\contentsline {section}{\numberline {10}Diagnóstico de los supuestos del modelo}{13}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Propiedades de los residuos}{14}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Linealidad}{14}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Homocedasticidad}{14}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Normalidad de los errores}{15}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Observaciones atípicas}{15}{subsection.10.5}%
+\contentsline {subsection}{\numberline {10.6}Independencia}{15}{subsection.10.6}%
+\contentsline {subsection}{\numberline {10.7}Resumen del diagnóstico}{16}{subsection.10.7}%
+\contentsline {section}{\numberline {11}Discusión crítica y extensión del modelo}{16}{section.11}%
+\contentsline {section}{\numberline {12}Conclusiones}{17}{section.12}%
+\contentsline {section}{\numberline {A}Proyecto en Python}{18}{appendix.Alph1}%
+\contentsline {section}{\numberline {B}Ampliación: pruebas formales de los supuestos}{18}{appendix.Alph2}%
